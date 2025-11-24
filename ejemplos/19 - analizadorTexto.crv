@@ -1,0 +1,45 @@
+ejercito Analisis {
+  mision contarVocales(texto) {
+    ejecutar:
+      var contador = 0
+      var i = 0
+      
+      atacar mientras (i < calibre(texto)) {
+        var letra = texto[i]
+        
+        estrategia si (
+          letra == "a" || letra == "e" || letra == "i" || 
+          letra == "o" || letra == "u" ||
+          letra == "A" || letra == "E" || letra == "I" || 
+          letra == "O" || letra == "U"
+        ) {
+          contador += 1
+        }
+        
+        i += 1
+      }
+      
+      retirada con contador
+  }
+  
+  mision contarConsonantes(texto) {
+    ejecutar:
+      longitud = calibre(texto)
+      vocales = Analisis.contarVocales(texto)
+      consonantes = longitud - vocales
+      
+      retirada con consonantes
+  }
+}
+
+mision principal() {
+  ejecutar:
+    reportar("Ingrese texto: ")
+    entrada = recibir()
+    
+    v = Analisis.contarVocales(entrada)
+    c = Analisis.contarConsonantes(entrada)
+    
+    reportar("Vocales: " + clasificarMensaje(v))
+    reportar("Consonantes: " + clasificarMensaje(c))
+}

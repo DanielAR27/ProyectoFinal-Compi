@@ -1,0 +1,22 @@
+// Calcula el Máximo Común Divisor usando el algoritmo de Euclides
+mision calcularMCD(a, b) severidad = estricto {
+    revisar:
+        a > 0
+        b > 0
+    
+    ejecutar:
+        num1 = a
+        num2 = b
+        
+        atacar mientras (num2 != 0) {
+            temp = num2
+            num2 = num1 % num2
+            num1 = temp
+        }
+        
+        reportar("El MCD es: " + num1)
+        retirada con num1
+    
+    confirmar:
+        num1 > 0
+}

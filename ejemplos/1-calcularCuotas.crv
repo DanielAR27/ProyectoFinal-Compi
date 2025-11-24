@@ -1,0 +1,35 @@
+// Reparte un monto total en N cuotas casi iguales.
+// Usa truncar para la parte entera y reparte el sobrante (+1) a las primeras cuotas.
+
+ejercito Finanzas {
+  mision calcularCuotas(total, cuotas) severidad=estricto {
+    revisar:
+      total >= 0
+      cuotas > 0
+
+    ejecutar:
+      var cuotaBase = truncar(total / cuotas)
+      var resto = total % cuotas
+
+      var indice = 1
+      var acumulado = 0
+
+      atacar mientras (indice <= cuotas) {
+        var pago = cuotaBase
+
+        estrategia si (resto > 0) {
+          pago = pago + 1
+          resto -= 1
+        }
+
+        reportar("Cuota " + indice + ": " + pago)
+        acumulado += pago
+        indice += 1
+      }
+
+      reportar("Total pagado: " + acumulado)
+
+    confirmar:
+      acumulado == total
+  }
+}

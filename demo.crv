@@ -1,0 +1,2 @@
+global var x = 5
+reportar(x)

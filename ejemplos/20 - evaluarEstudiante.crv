@@ -1,0 +1,40 @@
+ejercito Escuela {
+  global var aprobar = 60
+  
+  mision calcularPromedio(nota1, nota2, nota3) {
+    ejecutar:
+      promedio = (nota1 + nota2 + nota3) / 3
+      retirada con promedio
+  }
+  
+  mision determinarEstado(promedio) {
+    ejecutar:
+      var estado = ""
+      
+      estrategia si (promedio >= Escuela.aprobar) {
+        estado = "Aprobado"
+      } por defecto {
+        estado = "Reprobado"
+      }
+      
+      retirada con estado
+  }
+}
+
+mision evaluarEstudiante() {
+  ejecutar:
+    reportar("Nota 1: ")
+    n1 = clasificarNumero(recibir())
+    
+    reportar("Nota 2: ")
+    n2 = clasificarNumero(recibir())
+    
+    reportar("Nota 3: ")
+    n3 = clasificarNumero(recibir())
+    
+    prom = Escuela.calcularPromedio(n1, n2, n3)
+    estado = Escuela.determinarEstado(prom)
+    
+    reportar("Promedio: " + clasificarMensaje(prom))
+    reportar("Estado: " + estado)
+}

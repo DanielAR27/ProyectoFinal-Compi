@@ -1,0 +1,55 @@
+/* pequeño juego donde dos carros compiten, avanzando aleatoriamente
+    hasta llegar a la meta */
+
+mision repetirCaracter(c, n) {
+  revisar:
+    calibre(c) == 1
+    n >= 0
+
+  ejecutar:
+    var resultado = ""
+    var i = 0
+    atacar mientras (i < n) {
+      resultado = resultado + c
+      i = i + 1
+    }
+    retirada con resultado
+}
+
+mision carreraCarros() severidad = estricto {
+  ejecutar:
+    reportar("¡Bienvenido a la carrera de carros!")
+    
+    var carro1_pos = 0
+    var carro2_pos = 0
+    var meta = 20
+    
+    atacar mientras (carro1_pos < meta && carro2_pos < meta) {
+      // Avance aleatorio entre 1 y 3
+      var avance1 = azar() % 3 + 1
+      var avance2 = azar() % 3 + 1
+      
+      carro1_pos = carro1_pos + avance1
+      carro2_pos = carro2_pos + avance2
+      
+      // Mostrar posiciones actuales con una representación simple
+      var pista1 = repetirCaracter("-", carro1_pos) + "o0o"
+      var pista2 = repetirCaracter("-", carro2_pos) + "o0o"
+      reportar("Carro 1: " + pista1)
+      reportar("Carro 2: " + pista2)
+      reportar("-------------------------")
+    }
+
+    reportar("¡La carrera ha terminado!")
+    
+    estrategia
+      si (carro1_pos >= meta && carro2_pos >= meta) {
+        reportar("¡Es un empate!")
+      }
+      si (carro1_pos >= meta) {
+        reportar("¡El Carro 1 gana!")
+      }
+      por defecto {
+        reportar("¡El Carro 2 gana!")
+      }
+}

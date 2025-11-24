@@ -1,0 +1,34 @@
+// Variable global para comunicar entre misiones
+global var ultimoMensaje
+
+mision solicitarMensaje(mensaje) severidad = estricto {
+  ejecutar:
+    reportar(mensaje)
+    // Leer y guardar el mensaje como cadena válida
+    ultimoMensaje = clasificarMensaje(recibir())
+
+  confirmar:
+    ultimoMensaje != nulo
+    calibre(ultimoMensaje) > 0
+}
+
+mision contarPalabras() {
+  ejecutar:
+    // Solicitar y validar el mensaje mediante la misión auxiliar
+    solicitarMensaje("Ingrese el mensaje secreto: ")
+
+    var contador = 1
+    var indice = 0
+
+    // Contar espacios para estimar la cantidad de palabras
+    atacar mientras (indice < calibre(ultimoMensaje)) {
+      estrategia
+        si (ultimoMensaje[indice] == " ") {
+          contador = contador + 1
+        }
+      indice = indice + 1
+    }
+
+    reportar("El mensaje contiene " + clasificarMensaje(contador) + " palabras")
+    retirada con contador
+} 

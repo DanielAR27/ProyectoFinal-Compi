@@ -1,0 +1,32 @@
+// Realiza operaciones básicas según el operador
+mision calculadora(a, b, operador) severidad=advertencia {
+  ejecutar:
+    var resultado = 0
+   
+    estrategia
+      si (operador == "+") {
+        resultado = a + b
+      }
+      si (operador == "-") {
+        resultado = a - b
+      }
+      si (operador == "*") {
+        resultado = a * b
+      }
+      si (operador == "/") {
+        estrategia
+          si (b == 0) {
+            reportar("Error: División por cero")
+            retirada con nulo
+          }
+          por defecto {
+            resultado = a / b
+          }
+      }
+      por defecto {
+        reportar("Operador no reconocido")
+        retirada con nulo
+      }
+   
+    retirada con resultado
+}

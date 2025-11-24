@@ -1,0 +1,55 @@
+ejercito Geometria {
+  global var pi = 3.14159
+  
+  mision areaCirculo(radio) {
+    revisar:
+      radio > 0
+    
+    ejecutar:
+      area = Geometria.pi * radio * radio
+      retirada con area
+    
+    confirmar:
+      area > 0
+  }
+  
+  mision areaRectangulo(base, altura) {
+    revisar:
+      base > 0
+      altura > 0
+    
+    ejecutar:
+      area = base * altura
+      retirada con area
+    
+    confirmar:
+      area > 0
+  }
+}
+
+mision menuCalculadora() {
+  ejecutar:
+    reportar("Seleccione figura:")
+    reportar("1. Círculo")
+    reportar("2. Rectángulo")
+    
+    opcion = clasificarNumero(recibir())
+    
+    estrategia si (opcion == 1) {
+      reportar("Ingrese radio: ")
+      r = clasificarNumero(recibir())
+      resultado = Geometria.areaCirculo(r)
+      reportar("Área del círculo: " + clasificarMensaje(resultado))
+    }
+    si (opcion == 2) {
+      reportar("Ingrese base: ")
+      b = clasificarNumero(recibir())
+      reportar("Ingrese altura: ")
+      h = clasificarNumero(recibir())
+      resultado = Geometria.areaRectangulo(b, h)
+      reportar("Área del rectángulo: " + clasificarMensaje(resultado))
+    }
+    por defecto {
+      reportar("Opción inválida")
+    }
+}

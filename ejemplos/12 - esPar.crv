@@ -1,0 +1,10 @@
+mision esPar(num) {
+  ejecutar:
+    estrategia
+      si (num % 2 == 0) {
+        retirada con afirmativo
+      }
+      por defecto {
+        retirada con negativo
+      }
+}

@@ -1,0 +1,30 @@
+mision solicitarTexto(mensaje) severidad=estricto {
+  ejecutar:
+    reportar(mensaje)
+    var texto = recibir()
+  
+  confirmar:
+    texto != nulo
+    calibre(texto) > 0
+}
+
+mision esPalindromo() {
+  ejecutar:
+    var texto = solicitarTexto("Ingresar texto: ")
+    var resultado = "sí"
+    
+    estrategia si (calibre(texto) == 1) {
+      reportar("Sí es palindromo, pero sin gracia")
+      retirada
+    }
+    
+    var indice = 0
+    atacar mientras (indice < calibre(texto)) {
+      estrategia si (texto[indice] != texto[calibre(texto) - indice]) {
+          resultado = "no"
+          abortar
+        }
+      indice += 1
+    }
+    reportar("El texto ingresado " + resultado + " es palindromo")
+}

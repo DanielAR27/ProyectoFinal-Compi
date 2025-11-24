@@ -1,0 +1,19 @@
+mision potencia(base, exponente) severidad=estricto {
+  revisar:
+    exponente >= 0
+ 
+  ejecutar:
+    estrategia si (exponente == 0) {
+      retirada con 1
+    }
+   
+    var resultado = 1
+    var i = 0
+   
+    atacar mientras (i < exponente) {
+      resultado = resultado * base
+      i = i + 1
+    }
+   
+    retirada con resultado
+}

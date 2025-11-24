@@ -1,0 +1,21 @@
+// Cuenta cuántos dígitos tiene un número
+mision contarDigitos(num) {
+  ejecutar:
+    estrategia si (num == 0) {
+      retirada con 1
+    }
+   
+    var contador = 0
+    var n = num
+   
+    estrategia si (n < 0) {
+      n = -n
+    }
+   
+    atacar mientras (n > 0) {
+      contador = contador + 1
+      n = truncar(n / 10)
+    }
+   
+    retirada con contador
+}

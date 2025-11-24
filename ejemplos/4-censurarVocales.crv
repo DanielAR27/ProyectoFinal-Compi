@@ -1,0 +1,28 @@
+mision censurarVocales() severidad = estricto {
+  ejecutar:
+    reportar("Ingrese un texto: ")
+    texto = clasificarMensaje(recibir())
+ 
+    var i = 0
+    var salida = ""
+ 
+    atacar mientras (i < calibre(texto)) {
+      c = texto[i]
+      estrategia si (
+        c == "a" || c == "e" || c == "i" || c == "o" || c == "u" ||
+        c == "A" || c == "E" || c == "I" || c == "O" || c == "U"
+      ) {
+        salida = salida + "*"
+      } por defecto {
+        salida = salida + c
+      }
+      i = i + 1
+    }
+ 
+    reportar("Censurado: " + salida)
+    retirada con salida
+ 
+  confirmar:
+    texto != nulo
+    calibre(texto) > 0
+}

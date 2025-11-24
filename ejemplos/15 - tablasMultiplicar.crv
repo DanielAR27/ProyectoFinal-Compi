@@ -1,0 +1,23 @@
+// Genera una tabla de multiplicar hasta el límite especificado
+
+mision tablaMultiplicar() severidad = advertencia {
+    ejecutar:
+        reportar("Ingresa un número para ver su tabla: ")
+        numero = clasificarNumero(recibir())
+        reportar("¿Hasta qué número? (1-20): ")
+        limite = clasificarNumero(recibir())
+        
+        estrategia si (limite < 1 || limite > 20) {
+            reportar("Límite inválido. Usando 10 por defecto.")
+            limite = 10
+        }
+        
+        reportar("=== Tabla del " + numero + " ===")
+        contador = 1
+        
+        atacar mientras (contador <= limite) {
+            resultado = numero * contador
+            reportar(numero + " x " + contador + " = " + resultado)
+            contador += 1
+        }
+}

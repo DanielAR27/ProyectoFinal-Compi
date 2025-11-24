@@ -1,0 +1,22 @@
+mision generarSecuencia(limite) {
+  ejecutar:
+    var i = 1
+    var suma = 0
+    var texto = ""
+    
+    atacar mientras (i <= limite) {
+      suma += i
+      texto = texto + clasificarMensaje(i)
+      
+      estrategia si (i < limite) {
+        texto = texto + ", "
+      }
+      
+      i += 1
+    }
+    
+    reportar("Secuencia: " + texto)
+    reportar("Suma total: " + clasificarMensaje(suma))
+    
+    retirada con suma
+}

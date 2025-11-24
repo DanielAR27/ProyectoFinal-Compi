@@ -1,0 +1,39 @@
+mision generarNumeroSecreto() {
+  ejecutar:
+    secreto = (azar() % 100) + 1
+    retirada con secreto
+}
+
+mision jugarAdivinanza() {
+  ejecutar:
+    secreto = generarNumeroSecreto()
+    intentos = 0
+    adivinado = negativo
+    maxIntentos = 7
+    
+    reportar("¡Adivina el número entre 1 y 100!")
+    
+    atacar mientras (intentos < maxIntentos && adivinado == negativo) {
+      reportar("Intento " + clasificarMensaje(intentos + 1) + ": ")
+      numero = clasificarNumero(recibir())
+      
+      intentos += 1
+      
+      estrategia si (numero == secreto) {
+        reportar("¡Correcto! Lo adivinaste en " + clasificarMensaje(intentos) + " intentos")
+        adivinado = afirmativo
+      }
+      si (numero < secreto) {
+        reportar("Muy bajo, intenta con un número mayor")
+      }
+      si (numero > secreto) {
+        reportar("Muy alto, intenta con un número menor")
+      }
+    }
+    
+    estrategia si (adivinado == negativo) {
+      reportar("Se acabaron los intentos. El número era: " + clasificarMensaje(secreto))
+    }
+    
+    retirada con intentos
+}

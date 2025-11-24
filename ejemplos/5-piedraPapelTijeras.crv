@@ -1,0 +1,51 @@
+mision ElegirJugadaComputadora() severidad = advertencia {
+    ejecutar:
+        var n = azar() % 3
+        estrategia si (n == 0) {
+            retirada con "piedra"
+        }
+        si (n == 1) {
+            retirada con "papel"
+        }
+        por defecto {
+            retirada con "tijera"
+        }
+}
+
+mision PiedraPapelTijera() severidad = advertencia {
+    ejecutar:
+        var ganar = negativo
+        var jugadaUsuario = ""
+        var jugadaComputadora = ""
+        var ganador = ""
+        
+        atacar mientras (ganar == negativo) { 
+            reportar("Piedra, papel o tijera: ")
+            jugadaUsuario = recibir()
+            jugadaComputadora = ElegirJugadaComputadora()
+            reportar("Elegiste: " + jugadaUsuario)
+            reportar("La computadora eligió: " + jugadaComputadora)
+            
+            estrategia si (jugadaUsuario == jugadaComputadora) {
+                reportar("¡Empate!")
+                avanzar
+            }
+            si (jugadaUsuario == "piedra" && jugadaComputadora == "tijera") {
+                ganar = afirmativo
+                ganador = "Usuario"
+            }
+            si (jugadaUsuario == "papel" && jugadaComputadora == "piedra") {
+                ganar = afirmativo
+                ganador = "Usuario"
+            }
+            si (jugadaUsuario == "tijera" && jugadaComputadora == "papel") {
+                ganar = afirmativo
+                ganador = "Usuario"
+            }
+            por defecto {
+                ganar = afirmativo
+                ganador = "Computadora"
+            }
+        }
+        reportar("El ganador es: " + ganador)
+}

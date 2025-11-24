@@ -1,0 +1,25 @@
+// Convierte temperaturas entre Celsius y Fahrenheit
+
+mision convertirTemperatura() {
+    ejecutar:
+        reportar("=== CONVERSOR DE TEMPERATURA ===")
+        reportar("1. Celsius a Fahrenheit")
+        reportar("2. Fahrenheit a Celsius")
+        reportar("Elige opción: ")
+        
+        opcion = clasificarNumero(recibir())
+        reportar("Ingresa la temperatura: ")
+        temp = clasificarNumero(recibir())
+        
+        estrategia si (opcion == 1) {
+            resultado = (temp * 9 / 5) + 32
+            reportar(temp + "°C = " + resultado + "°F")
+        }
+        si (opcion == 2) {
+            resultado = (temp - 32) * 5 / 9
+            reportar(temp + "°F = " + resultado + "°C")
+        }
+        por defecto {
+            reportar("Opción inválida")
+        }
+}

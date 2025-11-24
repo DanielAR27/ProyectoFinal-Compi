@@ -1,0 +1,22 @@
+// Chatbot que solo responde con "Hola" y algunos mensajes aleatorios (Bastante util)
+// Nota: Este ejemplo tiene un error, y es utilizado con propósito de demostración.
+
+mision ElegirRespuestaChatbot() (severidad = advertencia) {
+    ejecutar:
+        var n = azar() % 5
+        estrategia si (n == 0) {
+                retirada con "Hola"
+            }
+            si (n == 1) {
+                retirada con "Lo siento, no entiendo tu pregunta."
+            }
+            si (n == 2) {
+                retirada con "¿Puedes reformular eso?"
+            }
+            si (n == 3) { // aquí hay un ERROR!!! (falta un paréntesis)
+                retirada con "Interesante, cuéntame más."
+            }
+            por defecto {
+                retirada con // ERROR: tiene "con" pero no retorna nada
+            // ERROR: No hay cierre de llave para la misión
+}
